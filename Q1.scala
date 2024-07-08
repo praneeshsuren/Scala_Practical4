@@ -1,5 +1,5 @@
-var itemNames = List[String]("Apple", "Banana", "Orange", "Grapes", "Mango")
-var itemQuantity = List[Int](5,10,15,20,25)
+var itemNames = Array("Apple", "Banana", "Orange", "Grapes", "Mango")
+var itemQuantity = Array(5,10,15,20,25)
 
 def displayInventory(): Unit = {
   println("Item Name\tItem Quantity")
@@ -11,7 +11,7 @@ def displayInventory(): Unit = {
 def restockItem(name: String, quantity: Int): Unit = {
   if (itemNames.contains(name)) {
     var index = itemNames.indexOf(name)
-    itemQuantity = itemQuantity.updated(index, itemQuantity(index) + quantity)
+    itemQuantity(index) += quantity
   } else {
     println("Item not found")
   }
@@ -21,7 +21,7 @@ def sellItem(name: String, quantity: Int): Unit = {
   if (itemNames.contains(name)) {
     var index = itemNames.indexOf(name)
     if (itemQuantity(index) >= quantity) {
-      itemQuantity = itemQuantity.updated(index, itemQuantity(index) - quantity)
+      itemQuantity(index) -= quantity
     } else {
       println("Not enough quantity")
     }
